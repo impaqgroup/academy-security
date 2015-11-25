@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Admin page </title>
+    </head>
+    <body>
+        <div th:if="${param.error}">
+            Invalid credentials.
+        </div>
+        <h1>Administration Panel!</h1>
+        Logged user: <span sec:authentication="name"></span>
+        Roles: <span sec:authentication="principal.authorities"></span>
+
+        <p>Restricted area. Use with caution!</p>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Fire employee"/>
+        </form>
+
+    </body>
+</html>
